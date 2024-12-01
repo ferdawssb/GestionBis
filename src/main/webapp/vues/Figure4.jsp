@@ -3,6 +3,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -41,8 +43,10 @@
 
 
 	<br>
-	<a href="${cxt}/ajoutEmploye">Ajouter un employe</a>
-	<br>
+	<sec:authorize access="hasRole('ADMIN')">
+		<a href="${cxt}/ajoutEmploye">Ajouter un employe</a>
+		<br>
+	</sec:authorize>
 
 
 	<a href="${cxt}/home">Liste des départements </a>
